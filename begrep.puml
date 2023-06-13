@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor transparent
+' skinparam monochrome reverse
+skinparam handwritten true
+object klasse
+object deltager 
+object klubb
+object løype
+object post
+object postenhet
+object brikke
+object meldestasjon
+
+deltager "*"-"1" klubb
+deltager "*"-up-"1" klasse
+klasse "*"-left-"1" løype
+løype "1"--"*" post
+post "*"--"1" postenhet
+postenhet "*"-"*" brikke
+brikke "1"-up-"1" deltager
+postenhet "1"--"0..1" meldestasjon
+@enduml

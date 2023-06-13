@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam handwritten true
+hide footbox
+
+actor deltager
+participant brikke
+participant postenhet
+participant meldestasjon
+database "emittiming" as dbe
+deltager -> brikke 
+activate brikke
+brikke -> postenhet : "stempling"
+activate postenhet
+postenhet --> brikke: postkode + tid
+deactivate brikke
+postenhet -> meldestasjon: brikkenummer\n + tid + postkode
+deactivate postenhet
+activate meldestasjon
+meldestasjon -> dbe : last opp til server
+deactivate meldestasjon
+
+@enduml
